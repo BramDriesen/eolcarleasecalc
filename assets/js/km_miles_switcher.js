@@ -1,3 +1,14 @@
 $(document).ready(function () {
-alert('yo');
+    $('#km').on('click', function () {
+        changeAllUnits('km');
+    });
+
+    $('#miles').on('click', function () {
+        changeAllUnits('miles');
+    });
+
+    function changeAllUnits(unit) {
+        $('#currentMileageUnit').text(unit);
+        $('#contractualLimitUnit').text(unit);
+    }
 });
