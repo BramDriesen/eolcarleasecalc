@@ -113,7 +113,7 @@
             <input type="number" class="form-control" id="currentMileage" name="currentMileage"
                    placeholder="Enter your current mileage">
             <div class="input-group-append">
-                <span class="input-group-text" id="currentMileageUnit">KM</span>
+                <span class="input-group-text" id="currentMileageUnit">km</span>
             </div>
         </div>
     </div>
@@ -124,7 +124,7 @@
             <input type="number" class="form-control" id="contractualLimit" name="contractualLimit"
                    placeholder="Enter your contractual mileage limit">
             <div class="input-group-append">
-                <span class="input-group-text" id="contractualLimitUnit">KM</span>
+                <span class="input-group-text" id="contractualLimitUnit">km</span>
             </div>
         </div>
     </div>
@@ -152,6 +152,7 @@
     <p>Here you can calculate your weekly average mileage. E.g. I drive X km to work 5 times a week but I also drive Y
         km to the gym 3 times a week and...</p>
     <p>If you're lazy and you know your average by hearth, you can add just one entry here 😀</p>
+    <p>The note field can be left empty, it's just there as a memory help for yourself when re-visiting this application.</p>
 
     <!-- Used to append fields dynamically -->
     <div id="weekly-calculation-fields"></div>
@@ -282,6 +283,7 @@
 <!-- Custom -->
 <script src="assets/js/km_miles_switcher.js" type="application/javascript"></script>
 <script src="assets/js/add_more_fieldsets.js" type="application/javascript"></script>
+<script src="assets/js/cookie.js" type="application/javascript"></script>
 <script src="assets/js/complete_calculation.js" type="application/javascript"></script>
 </body>
 </html>

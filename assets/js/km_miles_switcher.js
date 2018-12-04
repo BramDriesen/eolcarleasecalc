@@ -10,5 +10,7 @@ $(document).ready(function () {
     function changeAllUnits(unit) {
         $('#currentMileageUnit').text(unit);
         $('#contractualLimitUnit').text(unit);
+
+        // TODO: Change the weekly calculation as well.
     }
 });
