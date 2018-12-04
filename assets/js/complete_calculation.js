@@ -13,6 +13,7 @@ $('#calculate').on('click', function () {
     // * GENERAL * //.
     // *********** //.
     let messagePrinted = false;
+    let currentMonth = moment().startOf('month');
 
     // ******************* //.
     // * CALCULATE DATES * //.
@@ -57,7 +58,7 @@ $('#calculate').on('click', function () {
     // TABLE - HEAD.
     tableHtml += '<thead> <tr> <th scope="col">Year</th> <th scope="col">Month</th> <th scope="col">Mileage</th> <th scope="col">Information</th> </tr> </thead> <tbody>';
 
-    let mileageTracker = 0;
+    let mileageTracker = parseInt(currentMileage);
     years.forEach(function (year) {
         moment.months().forEach(function (month, index) {
             tableHtml += '<tr>';
@@ -86,11 +87,11 @@ $('#calculate').on('click', function () {
             if (monthDate.format('X') < startDateNoDay.format('X')) {
                 tableHtml += '<td>---</td>';
             }
+            // If we are BEFORE the CURRENT month, we don't need to do anything.
+            else if (monthDate.format('X') < currentMonth.format('X')) {
+                tableHtml += '<td>N/A</td>';
+            }
             else {
-                // TODO: Do something with the current mileage.
-                // TODO: On months before the current moth (e.g a year into the lease) we don't really know the mileage
-                // So we should display something else.
-
                 let dailyMileage = totalWeeklyMileage / 7;
                 mileageTracker += (monthDate.daysInMonth() * dailyMileage);
                 tableHtml += '<td>' + Math.round(mileageTracker) + '</td>';
