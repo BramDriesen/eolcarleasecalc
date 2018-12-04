@@ -6,11 +6,30 @@ $(document).ready(function () {
     $('input[name=contractualLimit]').val(Cookies.get('contractualLimit'));
     $('input[name=contractStart]').val(Cookies.get('contractStart'));
     $('input[name=contractDuration]').val(Cookies.get('contractDuration'));
-    // TODO: This is not working.
-    // TODO: We need to add html elements for each item.
-    // TODO: We also need to store the note.
-    $('input[name="weeklyMileage[]"]').val(Cookies.get('weeklyMileages'));
-    $('input[name="weeklyTimes[]"]').val(Cookies.get('weeklyTimes'));
+    // Weekly mileage.
+    let weeklyMileage = Cookies.getJSON('weeklyMileages');
+    let weeklyTimes = Cookies.getJSON('weeklyTimes');
+    let weeklyComment = Cookies.getJSON('weeklyComment');
+
+    // Firstly add elements which we can then populate.
+    for (let itemcount = 1; itemcount < weeklyMileage.length; itemcount++ ) {
+        add_weekly_calculation_fields();
+    }
+
+    // Populate the weekly mileage.
+    $.each($('input[name="weeklyMileage[]"]'), function (key, value) {
+        $(this).val(weeklyMileage[key]);
+    });
+
+    // Populate the weekly times.
+    $.each($('input[name="weeklyTimes[]"]'), function (key, value) {
+        $(this).val(weeklyTimes[key]);
+    });
+
+    // Populate the weekly comment.
+    $.each($('input[name="weeklyComment[]"]'), function (key, value) {
+        $(this).val(weeklyComment[key]);
+    });
 });
 
 // ************** //.
