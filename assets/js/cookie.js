@@ -58,7 +58,7 @@ $('#calculate').on('click', function () {
     // Weekly comment.
     let weeklyComment = [];
     $.each($('input[name="weeklyComment[]"]'), function (key, value) {
-        weeklyTimes.push($(this).val());
+        weeklyComment.push($(this).val());
     });
     Cookies.set('weeklyComment', weeklyComment);
 });
