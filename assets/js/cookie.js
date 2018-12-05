@@ -12,24 +12,26 @@ $(document).ready(function () {
     let weeklyComment = Cookies.getJSON('weeklyComment');
 
     // Firstly add elements which we can then populate.
-    for (let itemcount = 1; itemcount < weeklyMileage.length; itemcount++ ) {
-        add_weekly_calculation_fields();
+    if (weeklyMileage) {
+        for (let itemcount = 1; itemcount < weeklyMileage.length; itemcount++) {
+            add_weekly_calculation_fields();
+        }
+
+        // Populate the weekly mileage.
+        $.each($('input[name="weeklyMileage[]"]'), function (key, value) {
+            $(this).val(weeklyMileage[key]);
+        });
+
+        // Populate the weekly times.
+        $.each($('input[name="weeklyTimes[]"]'), function (key, value) {
+            $(this).val(weeklyTimes[key]);
+        });
+
+        // Populate the weekly comment.
+        $.each($('input[name="weeklyComment[]"]'), function (key, value) {
+            $(this).val(weeklyComment[key]);
+        });
     }
-
-    // Populate the weekly mileage.
-    $.each($('input[name="weeklyMileage[]"]'), function (key, value) {
-        $(this).val(weeklyMileage[key]);
-    });
-
-    // Populate the weekly times.
-    $.each($('input[name="weeklyTimes[]"]'), function (key, value) {
-        $(this).val(weeklyTimes[key]);
-    });
-
-    // Populate the weekly comment.
-    $.each($('input[name="weeklyComment[]"]'), function (key, value) {
-        $(this).val(weeklyComment[key]);
-    });
 });
 
 // ************** //.
